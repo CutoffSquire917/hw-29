@@ -25,36 +25,69 @@ public:
 	}
 };
 
+class Vehicle {
+private:
+	string brand;
+	int year;
+public:
+	Vehicle(const string brand, const int year) : brand(brand), year(year) {}
+	void getDescription() const {
+		cout << "Name: " << brand << "\nYear: " << year << endl;
+	}
+};
+
+class Car : public Vehicle {
+private:
+	string model;
+	int mileage;
+public:
+	Car(const string brand, const string model, const int year, const int mileage)
+		: Vehicle(brand, year), model(model), mileage(mileage) {
+	}
+	void getDescription() const {
+		Vehicle::getDescription();
+		cout << "Model: " << model << "\nMilage: " << mileage << "km" << endl;
+	}
+};
+
+class Employee {
+private:
+	string name;
+	string position;
+	double salary;
+public:
+	Employee(const string name, const string position, const double salary)
+		: name(name), position(position), salary(salary) {
+	}
+	void getDetails() const {
+		cout << "Name: " << name << ", Position: " << position << ", Salary: " << salary << endl;
+	}
+};
+
+class Manager : public Employee {
+private:
+	string department;
+public:
+	Manager(const string name, const string position, const double salary, const string department)
+		: Employee(name, position, salary), department(department) {
+	}
+	void getDetails() const {
+		Employee::getDetails();
+		cout << "Addt. Department: " << department << endl;
+	}
+};
+
+
 int main()
 {
-	Child ch1("Alex", "Pipi", 12);
+	Child ch1("Alice", "John", 30);
 	ch1.getInfo();
 
-	//Завдання 2: Автомобілі та їхні характеристики
-	//Опис:
-	//Створіть базовий клас Vehicle, який містить:
-
-	//Поле string brand (марка).
-	//Поле int year (рік випуску)
-	//Метод getDescription(), що повертає рядок з описом машини у форматі: «Brand: Toyota, Year: 2015».
-	//Створіть похідний клас Car, який додає:
-
-	//Поле string model (модель).
-	//Поле int mileage (пробіг)
-	//Метод getDescription(), який викликає метод getDescription() базового класу і додає дані про модель і пробіг у форматі: «Model: Corolla, Mileage: 50000 km».
-
-
-	//Завдання 3: Співробітники та їхні спеціалізації
-	//Опис:
-	//Створіть базовий клас Employee, який містить:
-
-	//Поле string name (ім'я співробітника).
-	//Поле string position (посада).
-	//Поле double salary (зарплата).
-	//Метод getDetails(), що повертає рядок у форматі:
-	//«Name: Alice, Position: Developer, Salary: 50000.00».
-	//Створіть похідний клас Manager, який додає:
-
-	//Поле string department (відділ).
-	//Метод getDetails(), який викликає метод getDetails() базового класу і додає інформацію про відділ у форматі: «Department: IT».
+	cout << endl;
+	Car c1("Toyota", "Corolla", 2015, 50000);
+	c1.getDescription();
+	
+	cout << endl;
+	Manager m1("Alice", "Developer", 50000, "IT");
+	m1.getDetails();
 }
