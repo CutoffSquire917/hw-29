@@ -11,7 +11,6 @@ public:
 		cout << "Name: " << name << "\nAge: " << age << endl;
 	}
 };
-
 class Child : public Person {
 private:
 	string parentName;
@@ -35,7 +34,6 @@ public:
 		cout << "Name: " << brand << "\nYear: " << year << endl;
 	}
 };
-
 class Car : public Vehicle {
 private:
 	string model;
@@ -63,7 +61,6 @@ public:
 		cout << "Name: " << name << ", Position: " << position << ", Salary: " << salary << endl;
 	}
 };
-
 class Manager : public Employee {
 private:
 	string department;
